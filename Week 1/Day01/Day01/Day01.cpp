@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Calculator.h"
+#include "Bots.h"
 
 int AddOne(int localNumber)
 {
@@ -22,6 +23,7 @@ void print(const std::vector<std::string>& names)
 
 int main()
 {
+    std::cout << "Hello Gotham!\n";
     /*
       Calling a method
         use the methods name.
@@ -29,6 +31,10 @@ int main()
         2) if the method returns data, it is usually best to store that data in a variable on the line where you call the method.
 
     */
+    CleaningBot fred;
+    fred.CleanRoom("Master Bath");
+
+    CleaningBot::BotReport();//how to call a static method
 
     /*
         ╔══════════════════════════╗
@@ -54,7 +60,7 @@ int main()
 
 
     /*
-        CHALLENGE #1:
+        CHALLENGE:
 
             Add an isEven method to the calculator.
             It should take 1 parameter and return a bool.
@@ -62,6 +68,10 @@ int main()
             Call the method on the t1000 calculator instance and print the results.
 
     */
+    int random = rand();
+    bool amIEven = t1000.isEven(random);
+    //ternary (condition) ? true : false
+    std::cout << random << " is " << ((amIEven) ? "" : "NOT") << " Even\n";
 
 
 
@@ -84,7 +94,7 @@ int main()
         1) on the initializer.
         2) using the push_back(item) method.
     */
-    std::vector<std::string> names { "Batman", "Bruce Wayne", "The Best" };
+    std::vector<std::string> names = { "Batman", "Bruce Wayne", "The Best" };
     names.push_back("The Greatest Detective");
     names.push_back("The Bat");
     names.push_back("The Joker");
@@ -93,7 +103,7 @@ int main()
 
 
     /*
-        CHALLENGE #2:
+        CHALLENGE:
 
             Create a vector that stores floats. Call the variable grades.
             Add a few grades to the grades vector.
@@ -135,7 +145,7 @@ int main()
     std::cout << "\n\n";
 
     /*
-        CHALLENGE #3:
+        CHALLENGE:
 
             loop over the grades vector and print out each grade
 
@@ -178,7 +188,7 @@ int main()
 
     /*
 
-        CHALLENGE #4:
+        CHALLENGE 4:
 
             Using the vector of grades you created.
             Remove the last item in the vector.
