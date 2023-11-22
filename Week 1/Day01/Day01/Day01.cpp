@@ -6,6 +6,7 @@
 #include <string>
 #include "Calculator.h"
 #include "Bots.h"
+#include <iomanip>
 
 int AddOne(int localNumber)
 {
@@ -20,9 +21,15 @@ void print(const std::vector<std::string>& names)
         std::cout << index++ << ". " << name << "\n";
 }
 
+float GetRandomGrade()
+{
+    return (rand() % 10000) / 100.0F;
+}
+
 
 int main()
 {
+    srand(time(NULL));
     std::cout << "Hello Gotham!\n";
     /*
       Calling a method
@@ -32,7 +39,8 @@ int main()
 
     */
     CleaningBot fred;
-    fred.CleanRoom("Master Bath");
+    std::string room = "Master Bath";
+    fred.CleanRoom(room);
 
     CleaningBot::BotReport();//how to call a static method
 
@@ -102,6 +110,17 @@ int main()
     names.push_back("Poison Ivy");
 
 
+    std::vector<std::string> ingredients{ "sesame seed buns", "pickles", "bacon", "Cheddar", "tomatoes" };
+
+    ingredients.push_back("all-beef patty");
+    ingredients.push_back("onions");
+
+    std::string lastItem = *(ingredients.end() - 1);
+    if(ingredients.empty() != true)
+        lastItem = ingredients.at(ingredients.size() - 1);
+    lastItem = ingredients.back();
+
+
     /*
         CHALLENGE:
 
@@ -109,6 +128,32 @@ int main()
             Add a few grades to the grades vector.
 
     */
+    /*
+        CHALLENGE:
+
+            loop over the grades vector and print out each grade
+
+    */
+    std::vector<float> grades{ GetRandomGrade(), GetRandomGrade() };
+    grades.push_back(GetRandomGrade());
+    grades.push_back(GetRandomGrade());
+    grades.push_back(GetRandomGrade());
+
+    std::cout << "\n*_*_*_2312 PG2*_*_*_\n";
+    for (float& grade : grades)
+    {
+        std::cout << std::setw(11) << grade << "\n";
+    }
+
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        std::cout << std::setw(11) << grades[i] << "\n";
+    }
+
+    for (std::vector<float>::iterator i = grades.begin(); i != grades.end(); i++)
+    {
+        std::cout << std::setw(11) << *i << "\n";
+    }
 
 
 
@@ -144,12 +189,6 @@ int main()
         std::cout << name << std::endl;
     std::cout << "\n\n";
 
-    /*
-        CHALLENGE:
-
-            loop over the grades vector and print out each grade
-
-    */
 
 
 
