@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "ThemeSong.h"
 
 std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber is optional
 {
@@ -40,14 +41,17 @@ int main()
         CHALLENGE 1:
 
             Write a method called batTheme.
-            Add an optional parameter to determine how many "na" are printed. The default value should be 13.
+            Add an optional parameter to determine how many "na" are printed. 
+            The default value should be 13.
             
-            If the calling code does not pass a value for the parameter, print "na na na na na na na na na na na na na Batman".
+            If the calling code does not pass a value for the parameter, 
+            print "na na na na na na na na na na na na na Batman".
             If a value is passed, print the number of "na" equal to the value.
             EX: if 6 is passed, print "na na na na na na Batman"
 
     */
-
+    ThemeSong::BatTheme();
+    ThemeSong::BatTheme(25);
 
 
 
@@ -67,6 +71,8 @@ int main()
 
     */
     std::vector<int> scores = { 1,2,3,4,5 };
+    std::vector<int>& alias = scores;//does NOT copy
+    std::vector<int> notAnAlias = scores;//does copy
 
     //1) copy each element manually
     std::vector<int> scores2;
@@ -84,8 +90,24 @@ int main()
     /*
         CHALLENGE 2:
 
-            Copy the JLA vector and add some villains to the new vector. Don't modify the original JLA vector.
+            Copy the JLA vector and add some villains to the new vector. 
+            Don't modify the original JLA vector.
     */
     std::vector<std::string> JLA = { "Batman", "Wonder Woman", "Superman", "Flash" };
+    std::vector<std::string> doom = JLA;
+    doom.push_back("Lex");
+    doom.push_back("Bizarro");
+    doom.push_back("Aquaman");
+    doom.push_back("Bane");
+    std::cout << "\n---JLA---\n";
+    for (auto& hero : JLA)
+    {
+        std::cout << hero << "\n";
+    }
+    std::cout << "\n---DOOM---\n";
+    for (auto& hero : doom)
+    {
+        std::cout << hero << "\n";
+    }
 
 }

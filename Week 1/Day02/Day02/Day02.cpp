@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include "Day02.h"
 
 bool postFix(std::string& hero)
 {
@@ -63,7 +64,17 @@ void CalculateStats(const std::vector<float>& course, float& min, float& max)
         //or...
         //if (course[i] < min) min = course[i];
 
-        max = std::max(max, course[i]);
+        max = std::max<float>(max, course[i]);
+    }
+}
+
+void PrintGrades(std::vector<float>& grades)
+{
+
+    std::cout << "*_*_  PG2 2312  _*_*\n";
+    for (auto& grade : grades)
+    {
+        std::cout << std::setw(10) << grade << "\n";
     }
 }
 
@@ -97,12 +108,8 @@ int main()
 
     */
     std::vector<float> grades;
-    GetGrades(grades);
-    std::cout << "*_*_  PG2 2312  _*_*\n";
-    for (auto& grade : grades)
-    {
-        std::cout << std::setw(10) << grade << "\n";
-    }
+    GetGrades(grades); 
+    PrintGrades(grades);
     float minGrade, maxGrade;
     CalculateStats(grades, minGrade, maxGrade);
     std::cout << "Min: " << minGrade << "\t Max: " << maxGrade << "\n";
@@ -117,10 +124,20 @@ int main()
 
         This is the way you pass by reference and prevent the method from changing the variable.
     */
-    std::vector<int> highScores;
-    for (int i = 0; i < 10; ++i)
-        highScores.push_back(rand());
+    std::vector<int> highScores(15);
+    //highScores.reserve(15);
+    printInfo(highScores);
+    for (int i = 0; i < 15; ++i)
+    {
+        highScores[i] = rand();
+        //highScores.push_back(rand());
+        printInfo(highScores);
+    }
     float avg = average(highScores);
+
+    std::cout << "ERasing...\n";
+    highScores.erase(highScores.begin() + 5);
+    printInfo(highScores);
 
 
 
@@ -180,9 +197,18 @@ int main()
         CHALLENGE 3:
 
             Using the vector of grades you created.
-            Remove all the failing grades (grades < 59.5).
+            Remove all the failing grades (grades < 59.5)
             Print the grades.
     */
+    for (size_t i = 0; i < grades.size(); )
+    {
+        if (grades[i] < 59.5)
+        {
+            grades.erase(grades.begin() + i);
+        }
+        else i++;
+    }
+    PrintGrades(grades);
 
 
 
