@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 bool postFix(std::string& hero)
 {
@@ -36,6 +37,36 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+
+void SomeMethod(std::string& someHero)
+{
+    someHero = "Batman";
+}
+
+void GetGrades(std::vector<float>& course)
+{
+    srand(time(NULL));
+    for (size_t i = 0; i < 10; i++)
+    {
+        course.push_back((rand() % 10001) / 100.0F);
+    }
+}
+
+void CalculateStats(const std::vector<float>& course, float& min, float& max)
+{
+    if (course.empty()) return;
+
+    min = max = course[0];
+    for (size_t i = 1; i < course.size(); i++)
+    {
+        min = std::min<float>(min, course[i]);
+        //or...
+        //if (course[i] < min) min = course[i];
+
+        max = std::max(max, course[i]);
+    }
+}
+
 int main()
 {
     /*
@@ -48,6 +79,9 @@ int main()
             This is because the parameter is actually just a new name for the other variable.
     */
     std::string spider = "Spiderman";
+    SomeMethod(spider);
+    std::string marvel = "Hulk";
+    SomeMethod(marvel);
     bool isEven = postFix(spider);
     std::string evenResult = (isEven) ? "TRUE" : "FALSE";
     std::cout << spider << "\n" << "Is Even postfix? " << evenResult << "\n";
@@ -59,9 +93,19 @@ int main()
             Write a method to fill the vector of floats with grades.
             1) pass it in by reference
             2) add 10 grades to the vector
+            3) in main, loop and print the grades
 
     */
     std::vector<float> grades;
+    GetGrades(grades);
+    std::cout << "*_*_  PG2 2312  _*_*\n";
+    for (auto& grade : grades)
+    {
+        std::cout << std::setw(10) << grade << "\n";
+    }
+    float minGrade, maxGrade;
+    CalculateStats(grades, minGrade, maxGrade);
+    std::cout << "Min: " << minGrade << "\t Max: " << maxGrade << "\n";
 
 
 
@@ -85,7 +129,7 @@ int main()
 
             Write a method to calculate the stats on a vector of grades
             1) create a method to calculate the min, max. 
-                pass the grades vector as a const reference. Use ref parameters for min and max.
+               pass the grades vector as a const reference. Use ref parameters for min and max.
             2) call the method in main and print out the min, max.
 
     */
