@@ -43,6 +43,28 @@ void Bats(int i)
     }
 }
 
+void bubbleSort(std::vector<int>& A)
+{
+    int n = A.size();
+    bool swapped;
+    do
+    {
+        swapped = false;
+        for (size_t i = 1; i <= n-1; i++)
+        {
+            if (A[i - 1] > A[i])
+            {
+                //swap(A[i-1],A[i]);
+                int temp = A[i - 1];
+                A[i - 1] = A[i];
+                A[i] = temp;
+                swapped = true;
+            }
+        }
+        --n;
+    } while (swapped);
+}
+
 int main()
 {
     /*
@@ -101,6 +123,21 @@ int main()
     for (auto i : nums)
         std::cout << i << " ";
 
+    std::vector<int> scores;
+    for (size_t i = 0; i < 10; i++)
+        scores.push_back(rand());
+
+    std::cout << "\n----UNSORTED----\n";
+    for (auto& score : scores)
+    {
+        std::cout << score << "\n";
+    }
+    bubbleSort(scores);
+    std::cout << "\n----SORTED----\n";
+    for (auto& score : scores)
+    {
+        std::cout << score << "\n";
+    }
     /*
         ╔═════════════════╗
         ║Comparing Strings║
