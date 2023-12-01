@@ -116,7 +116,8 @@ int main()
 
 
 	std::vector<std::string> students{ "Candace", "Josh", "Daniel", "Ana", "Lucas", "Jamauri", "Harold", "Bryan", "David", "Will", "Mitchell",
-	"Johnny", "Kasey", "Jonathan", "Nasir", "Chanaya", "Diogo" };
+	"Johnny", "Kasey", "Jonathan", "Nasir", "Chanaya", "Diogo",
+	"Akheem","Antony","Arnold","Christopher","Jackson","Jason","Zachary" };
 
 
 	/*
@@ -181,6 +182,18 @@ int main()
 			Loop over your grades map and print each student name and grade.
 
 	*/
+	srand(time(NULL));
+	std::map<std::string, double> grades;
+	for (auto& name : students)
+	{
+		grades[name] = (rand() % 10001) / 100.0F;
+	}
+
+	std::cout << "\n\n$_$_$  PG2 December 2023  $_$_$\n";
+	for (auto& [student,grade] : grades)
+	{
+		std::cout << std::setw(15) << std::left << student << std::setw(8) << std::right << grade << "\n";
+	}
 
 
 
@@ -207,7 +220,12 @@ int main()
 		std::cout << "Dora found " << foundIter->second << " Maces\n";
 	}
 
-
+	std::string itemToLookup = "Big Mac";//a key
+	auto menuItemFound = menu.find(itemToLookup);
+	if (menuItemFound == menu.end())
+		std::cout << "Sorry, " << itemToLookup << " is not on the menu. Try McDonald's.\n";
+	else
+		std::cout << itemToLookup << " costs " << menuItemFound->second << ".\n";
 
 	/*
 		CHALLENGE 5:
@@ -217,6 +235,14 @@ int main()
 			else print out a message that the student was not found
 
 	*/
+	std::string studentToFind = "Josh";
+	auto wasFound = grades.find(studentToFind);
+	if (wasFound != grades.end())
+	{
+		std::cout << studentToFind << " has a grade of " << wasFound->second << ".\n";
+	}
+	else
+		std::cout << studentToFind << " is not in PG2 this month.\n";
 
 
 
@@ -228,12 +254,20 @@ int main()
 
 		[  Updating a value for a key in a map  ]
 
-		To update an exisiting value in the map, use the [ ]
+		To update an existing value in the map, use the [ ]
 
 
 	*/
 	dorasBackpack[Weapon::Axe] = 1;//updates the count for the axe
 
+	itemToLookup = "Fried Rice";
+	menuItemFound = menu.find(itemToLookup);
+	if (menuItemFound != menu.end())
+	{
+		std::cout << itemToLookup << " was " << menuItemFound->second;
+		menuItemFound->second *= 1.05F;
+		std::cout << ". Now it costs " << menuItemFound->second << "! Thanks Putin.\n";
+	}
 
 
 	/*
