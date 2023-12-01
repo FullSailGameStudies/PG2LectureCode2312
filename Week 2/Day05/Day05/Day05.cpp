@@ -11,6 +11,22 @@ enum class Weapon
     Sword, Axe, Spear, Mace
 };
 
+int LinearSearch(/*what are we searching in*/std::vector<int> scores,
+    /*what are we searching for*/int someNum)
+{
+    int index = -1;
+
+    for (size_t i = 0; i < scores.size(); i++)
+    {
+        if (scores[i] == someNum)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+}
 
 int main()
 {
@@ -35,7 +51,12 @@ int main()
 
     */
     std::vector<int> numbers = { 0,1,2,3,4,5,6 };
-    int searchNumber = 15;
+    int searchNumber = 0;
+    int foundIndex = LinearSearch(numbers, searchNumber);
+    if (foundIndex != -1)
+        std::cout << searchNumber << " was found at index " << foundIndex << "\n";
+    else
+        std::cout << searchNumber << " was not found.\n";
 
 
 
@@ -61,6 +82,21 @@ int main()
         1) using the insert method.
         3) using [key] = value
     */
+
+    std::map<std::string, float> menu;
+    auto wasInserted = menu.insert(std::pair<std::string, float>("Cuban Sandwich", 12.57F));
+    if (wasInserted.second)//was it inserted?
+    {
+        std::cout << "The cuban was added to the menu.\n";
+    }
+    else
+        std::cout << "The cuban was already on the menu.\n";
+
+    menu["Chicken Caesar Wrap"] = 6.50F;//overwrite any existing value
+    menu["'Bottomless' Boneless Buffalo Wings"] = 14.99F;//overwrite any existing value
+    menu["Fried Rice"] = 7.99F;//overwrite any existing value
+
+
     std::map<Weapon, int> dorasBackpack;//will store the counts of each kind of weapon
 
     //returns an iterator and a bool. 
@@ -85,7 +121,8 @@ int main()
 
 
 
-
+    std::vector<std::string> students{ "Candace", "Josh", "Daniel", "Ana", "Lucas", "Jamauri", "Harold", "Bryan", "David", "Will", "Mitchell",
+    "Johnny", "Kasey", "Jonathan", "Nasir", "Chanaya", "Diogo" };
 
 
     /*
