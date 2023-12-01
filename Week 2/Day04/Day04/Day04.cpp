@@ -64,6 +64,28 @@ void bubbleSort(std::vector<int>& A)
         --n;
     } while (swapped);
 }
+void bubbleSort(std::vector<std::string>& A)
+{
+    int n = A.size();
+    bool swapped;
+    do
+    {
+        swapped = false;
+        for (size_t i = 1; i <= n - 1; i++)
+        {
+            //if (A[i - 1] > A[i])//case-sensitive
+            if(_stricmp(A[i-1].c_str(), A[i].c_str()) > 0)
+            {
+                //swap(A[i-1],A[i]);
+                std::string temp = A[i - 1];
+                A[i - 1] = A[i];
+                A[i] = temp;
+                swapped = true;
+            }
+        }
+        --n;
+    } while (swapped);
+}
 
 int main()
 {
@@ -158,10 +180,21 @@ int main()
             to all uppercase/lowercase
 
     */
-    std::string s1 = "Batman", s2 = "Aquaman";
+    std::string s1 = "Batman", s2 = "batman";
     int compResult = _stricmp(s1.c_str(), s2.c_str());
+    // < 0 s1 LESS THAN s2
+    // = 0 s1 EQUALS s2
+    // > 0 s1 greater than s2
+    if (compResult < 0)
+        std::cout << s1 << " LESS THAN " << s2 << "\n";
+    else if (compResult == 0)
+        std::cout << s1 << " EQUALS " << s2 << "\n";
+    else if (compResult > 0)
+        std::cout << s1 << " GREATER THAN " << s2 << "\n";
     //OR...
     int compareResult = toUpper(s1).compare(toUpper(s2));
+
+    //if(s1 < s2)
 
 
 
@@ -197,8 +230,15 @@ int main()
     std::vector<std::string> names = { "Wonder Woman", "Superman", "Batman", "Flash", "Aquaman" };
     //call your BubbleSort on the names vector.
 
+    //print the unsorted vector.
+    std::cout << "\n---UNSORTED---\n";
+    for (auto& name : names)
+        std::cout << name << "\n";
+
+    bubbleSort(names);
 
     //print the sorted vector.
+    std::cout << "\n---SORTED---\n";
     for (auto& name : names)
         std::cout << name << "\n";
 }
