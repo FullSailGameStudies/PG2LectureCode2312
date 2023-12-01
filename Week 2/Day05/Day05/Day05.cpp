@@ -276,4 +276,25 @@ int main()
 			Pick any student and curve the grade (add 5) that is stored in the grades map
 
 	*/
+	studentToFind = "Harold";
+	wasFound = grades.find(studentToFind);
+	if (wasFound != grades.end())
+	{
+		std::cout << studentToFind << " had a grade of " << wasFound->second << ". Now the grade is ";
+		wasFound->second = std::min<float>(100.0F, wasFound->second + 5);
+		std::cout << wasFound->second << ".\n";
+	}
+
+
+	itemToLookup = "Chicken Nuggies";
+	size_t numRemoved = menu.erase(itemToLookup);
+	if (numRemoved > 0)
+		std::cout << itemToLookup << " was removed from the menu. No Kids allowed!\n";
+
+	menuItemFound = menu.find(itemToLookup);
+	if (menuItemFound != menu.end())
+	{
+		auto nextItemInMap = menu.erase(menuItemFound);
+	}
+
 }
