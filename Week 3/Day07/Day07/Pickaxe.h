@@ -11,10 +11,21 @@ class Pickaxe //class interface
 	// 
 	//what describes the class (variables)
 	//	called fields or data members
-
 	//material, durability, strength
 
 public:
+	Pickaxe(Material material, float durability) //constructor (ctor)
+	{
+		material_ = material;//field = parameter
+		Durability(durability);//call the setter to enforce the constraints
+	}
+	//use the member initialization list
+	Pickaxe(Material material) :
+		material_(material),
+		durability_(100)
+	{
+	}
+
 	//getter methods (accessors to fields)
 	Material GetMaterial() const;
 	float Durability() const { return durability_; }

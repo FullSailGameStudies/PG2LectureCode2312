@@ -9,7 +9,11 @@ public:
 	int Age() const;
 	void Age(int age);
 
-
+	Person(const std::string& name, int age) 
+	{
+		Name(name);
+		Age(age);
+	}
 
 private:
 	std::string name_;

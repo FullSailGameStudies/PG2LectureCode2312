@@ -51,10 +51,15 @@ int main()
         Lecture code: add a Car class
     
     */
-    Pickaxe picker;
-    picker.Durability(10000000.0F);
-    Material newMaterial = Material::Diamond;
-    newMaterial = (Material)100;
+    int score = 0;
+    Pickaxe picker(Material::Gold, 50);//call the ctor
+
+    //picker.Durability(10000000.0F);
+    //Material newMaterial = Material::Diamond;
+    //newMaterial = (Material)100;
+    //picker.SetMaterial(newMaterial);
+
+    Pickaxe picker2(Material::Iron);
 
 
 
@@ -84,10 +89,15 @@ int main()
         CHALLENGE:
             Add an age field and a name field to the Person class WITH getters/setters
     */
-    Person bruce;
-    std::string name("Bruce Wayne");
-    bruce.Name(name);
-    bruce.Age(35);
+    /*
+
+        CHALLENGE:
+            Add a constructor to the Person class to initialize the age and name fields
+    */
+    Person bruce("Bruce Wayne", 35);
+    //std::string name("Bruce Wayne");
+    //bruce.Name(name);
+    //bruce.Age(35);
 
 
 
@@ -173,11 +183,6 @@ int main()
     */
 
 
-    /*
-
-        CHALLENGE:
-            Add a constructor to the Person class to initialize the age and name fields
-    */
 
 
 
