@@ -2,6 +2,9 @@
 //
 
 #include <iostream>
+#include "Pickaxe.h"
+#include <vector>
+#include "Person.h"
 
 
 /*              CLASSESS
@@ -48,14 +51,11 @@ int main()
         Lecture code: add a Car class
     
     */
+    Pickaxe picker;
+    picker.Durability(10000000.0F);
+    Material newMaterial = Material::Diamond;
+    newMaterial = (Material)100;
 
-    /*
-        CHALLENGE:
-
-            Create a Person class.
-            Right-Click the project and select "Add > Class..."
-
-    */
 
 
 
@@ -65,7 +65,7 @@ int main()
         ║ FIELDS ║ - the data members of the class
         ╚════════╝
 
-        use mCamelCasingNamingConvention to name your fields in a C# class
+        use mCamelCasingNamingConvention to name your fields in a C++ class
 
         int mModelYear;
 
@@ -75,8 +75,19 @@ int main()
 
     /*
         CHALLENGE:
-            Add an age field and a name field to the Person class
+
+            Create a Person class.
+            Right-Click the project and select "Add > Class..."
+
     */
+    /*
+        CHALLENGE:
+            Add an age field and a name field to the Person class WITH getters/setters
+    */
+    Person bruce;
+    std::string name("Bruce Wayne");
+    bruce.Name(name);
+    bruce.Age(35);
 
 
 
