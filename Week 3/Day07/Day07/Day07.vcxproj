@@ -132,6 +132,7 @@
     <ClCompile Include="Pickaxe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Pickaxe.h" />
   </ItemGroup>

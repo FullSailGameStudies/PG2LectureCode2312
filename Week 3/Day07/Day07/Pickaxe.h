@@ -36,6 +36,9 @@ public:
 		if(durability >= 0 && durability <= 100) //constraints
 			durability_ = durability; 
 	}
+
+	bool Swing(int x, int y, int z);
+
 protected:
 private:
 	Material material_; //field (data member)
