@@ -12,9 +12,17 @@ public:
 	{	}
 	std::string vehicleInformation();
 
-	void refuel()
+	//void refuel()
+	//{
+	//	mFuelLevel = mMaxFuelLevel;
+	//}
+
+	void refuel(int fuelToAdd = 0)
 	{
-		mFuelLevel = mMaxFuelLevel;
+		if (fuelToAdd == 0) 
+			mFuelLevel = mMaxFuelLevel;
+		else
+			mFuelLevel = std::min(mMaxFuelLevel, mFuelLevel + fuelToAdd);
 	}
 
 	//getter (accessor)

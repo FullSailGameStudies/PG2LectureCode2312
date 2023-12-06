@@ -101,6 +101,8 @@ int main()
 		Lecture Code: overload the + operator in Account
 
 	*/
+	Account savings, checking;
+	Account moneyMarket = savings + checking;
 
 
 
