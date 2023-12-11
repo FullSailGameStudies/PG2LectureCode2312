@@ -61,9 +61,9 @@ public:
 	{
 
 	}
-	void print()
+	virtual void print() //do NOT mark all methods as virtual. only mark the methods as virtual as they are needed
 	{
-		std::cout << "Hello base " << mNum << "\n";
+		std::cout << "\nHello base " << mNum << "\n";
 	}
 };
 
@@ -74,4 +74,12 @@ private:
 public:
 	derived(std::string str, int num) : base(num), mStr(str)
 	{ }
+	void print() override
+	{
+		//fully override the base behavior (DON'T call the base version here)
+
+		//to EXTEND the base method, call the base method inside your derived overriden method
+		base::print();
+		std::cout << "\nHello derived " << mStr << "\n";
+	}
 };

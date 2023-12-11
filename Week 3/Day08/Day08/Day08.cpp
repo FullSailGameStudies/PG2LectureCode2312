@@ -147,6 +147,10 @@ int main()
 		Lecture Code: override the print method in the base/derived classes in the Polymorphism.h file
 
 	*/
+	base b(5);
+	derived d("Bruce", 25);
+	b.print();
+	d.print();
 
 
 
@@ -156,12 +160,13 @@ int main()
         ╚*************╝
 
 			Override Weapon's showMe method in the Pistol class.
-			In Pistol's version, call the base version then print out the rounds and magCapacity
+			In Pistol's version, call the base version 
+			then print out the rounds and magCapacity
 
 
 
 	*/
-
+	bertha.showMe();
 
 
 
@@ -205,6 +210,31 @@ int main()
 
 
 
+	int num = 5;
+	long bigNum = num;//IMPLICIT casting
+	num = bigNum;
+	float fNum = 10.5F;
+	num = (int)fNum;//EXPLICIT casting  static_cast<>  dynamic_cast<>
+
+
+	Pistol bang(10, 10, 10, 10);
+	Weapon wpn = bang;//UPCAST -- from a DERIVED variable to a BASE variable
+	//bang = wpn;//DOWNCAST -- from a BASE variable to a DERIVED variable
+
+	Pistol* myWpn = new Pistol(10, 10, 10, 10);
+	delete myWpn;
+	myWpn = nullptr;
+	if(myWpn != nullptr)
+		myWpn->showMe();
+
+	{
+		std::unique_ptr<Pistol> pew = std::make_unique<Pistol>(10, 10, 10, 10);
+		std::unique_ptr<Pistol> pew2 = std::move(pew);
+
+		std::cout << "UPCASTING...\n";
+		std::unique_ptr<Weapon> wpn2 = std::make_unique<Pistol>(10, 10, 10, 10);
+		wpn2->showMe();
+	}//pew is deleted when it goes out of scope
 	/*
         ╔*************╗
         ║  CHALLENGE  ║

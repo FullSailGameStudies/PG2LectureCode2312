@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+int gOtherCount = 0;
 
 void demo()
 {
@@ -22,15 +23,20 @@ public:
 	int mModelYear; //each car has its own model year variable
 	static int mNumberOfCarsMade; //shared by ALL cars
 
-	static void reporting()
+	//static method CANNOT access non-static members
+	//static method CAN access static members
+	static void reporting() //no 'this' available
 	{
 		//std::cout << "Model year: " << mModelYear << "\n"; //ERROR! cannot access non-static members
 		std::cout << "Number of cars made: " << mNumberOfCarsMade << "\n";
 	}
 
-	void vehicleInfo() //there's a hidden parameter called 'this'
+	//non-static method CAN access non-static members
+	//non-static method CAN access static members
+	//non-static: there's a hidden parameter called 'this'
+	void vehicleInfo() //Car* this
 	{
-		std::cout << "Model Year: " << this->mModelYear << "\n";
+		std::cout << "Model Year: " << mModelYear << "\n";
 	}
 };
 

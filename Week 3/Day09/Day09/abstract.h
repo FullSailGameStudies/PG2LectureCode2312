@@ -13,5 +13,7 @@ class Grenade : public Weapon
 public:
 	//required to implement
 	virtual int calcDamage()
-	{	}
+	{	
+		return 5;
+	}
 };
