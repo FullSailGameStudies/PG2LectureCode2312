@@ -55,10 +55,10 @@ int main()
 	//1. OPEN the file
 	std::ofstream outFile(fullPath);
 
+	char delimiter = '*';
 	if (outFile.is_open())
 	{
 		//2. WRITE to the file
-		char delimiter = '*';
 		outFile << "Batman!" << delimiter << 5 << delimiter;
 		outFile << 13.7 << delimiter << true << delimiter << 420 << "\n";
 
@@ -81,6 +81,54 @@ int main()
 
 		Lecture code: using the filePath variable, open an input file, use getline to read a line, print the line
 	*/
+	{
+		//1. OPEN the file
+		std::ifstream inputFile(fullPath);
+
+		if (inputFile.is_open())
+		{
+			//2. READ the file
+			std::string line;
+			std::getline(inputFile, line);
+			std::cout << line << "\n";
+
+			std::stringstream lineStream(line);
+			std::string data;
+			std::cout << "\n PARSING the CSV\n";
+			int index = 1;
+			while (std::getline(lineStream, data, delimiter))
+			{
+				if(index == 1) //string
+					std::cout << data << "\n";
+				else if (index == 2)
+				{
+					int five = std::stoi(data);
+					std::cout << five << "\n";
+				}
+				else if (index == 3)
+				{
+					double dbl = std::stod(data);
+					std::cout << dbl << "\n";
+				}
+				else if (index == 4)
+				{
+					bool isTrue = std::stoi(data);
+					std::cout << isTrue << "\n";
+				}
+				else
+				{
+					int four20 = std::stoi(data);
+					std::cout << four20 << "\n";
+				}
+				
+				index++;
+			}
+		}
+		else
+			std::cout << fullPath << " could not be found. STEEV!!!\n";
+
+		//3. CLOSE the file
+	}//inputFile.close(); automatically closes when the variable goes out of scope
 
 
 	/*
