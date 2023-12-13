@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Hero.h"
 
 
 
@@ -168,4 +169,22 @@ int main()
 	std::string multi = "Batman^Bruce Wayne^35#Superman^Clark Kent^25#Wonder Woman^Diana Prince^25#Aquaman^Arthur Curry^12";
 	char collectionSeparator = '#';
 	char objectSeparator = '^';
+	std::stringstream heroStream(multi);
+	std::string heroData;
+	std::vector<Hero> JLA;
+	while (std::getline(heroStream, heroData, collectionSeparator))
+	{
+		std::stringstream heroDataStream(heroData);
+		Hero nextHero;
+		std::getline(heroDataStream, nextHero.Name, objectSeparator);
+		std::getline(heroDataStream, nextHero.Secret, objectSeparator);
+		std::string age;
+		std::getline(heroDataStream, age, objectSeparator);
+		nextHero.Age = std::stoi(age);
+		JLA.push_back(nextHero);
+	}
+	for (auto& hero : JLA)
+	{
+		std::cout << hero.Name << "(aka " << hero.Secret << "). " << hero.Age << " years old.\n";
+	}
 }
